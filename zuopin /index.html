@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <ul class="head_list">
+        <li class="border">
+            <a href="javascript:void(0);" onclick="slideTo(0)" class="bg">未使用</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="slideTo(1)">已使用</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="slideTo(2)">已过期</a>
+        </li>
+    </ul>
+</header>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+    var tab=new Swiper(".swiper-container",{
+        onSlideChangeStart:function (swiper) {
+            $('.head_list li').eq(swiper.activeIndex).addClass('border').find('a').addClass('bg').parent().siblings().removeClass('border').find('a').removeClass('bg')
+        }
+    });
+    function slideTo(index) {
+        tab.slideTo(index);
+        $('.head_list li').eq(index).addClass('border').find('a').addClass('bg').parent().siblings().removeClass('border').find('a').removeClass('bg')
+    }
+</script>
+</body>
+</html>
